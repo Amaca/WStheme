@@ -1,0 +1,49 @@
+// Grid settings
+$enable-flex:           true;
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Main Colors
+$brand-primary:         #0e38b1;
+$brand-secondary:       #f0cf61;
+
+// Background Colors:
+$bg-light-grey:			#eaeaea;
+$bg-white:				#ffffff;
+
+// Font colors: 
+$font-dark:             #181818;
+$font-light:			#7d7d7d;
+$font-white:			#ffffff;
+
+// Font Size
+$fontsize-smallest:		12px;
+$fontsize-small:		14px;
+$fontsize-normal:		16px;
+$fontsize-button:		18px;
+$fontsize-mid1:			20px;
+$fontsize-mid2: 	    24px;
+$fontsize-big:  		30px; 
+$fontsize-heading:		40px;
+
+// Font Weight
+$fontweight-medium:		500;
+$fontweight-strong:		600;
+$fontweight-strongest:	800;
+
+// Line Height
+$lineheight-medium:		30px;
+$lineheight-large:		40px;
+
+// Padding 
+$padding-small:		    18px;
+$padding-normal:		25px;
+$padding-medium:		40px;
+$padding-large:			80px;
+
+// Buttons
+$button-width:		    140px;
+
+// animation
+$easeInOutExpo:         all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+$transition:            cubic-bezier(.49, .06, .21, .98);

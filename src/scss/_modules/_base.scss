@@ -1,0 +1,126 @@
+/*--------------------------------------------------
+Base
+--------------------------------------------------*/
+
+html{
+
+}
+
+body{
+      // LG
+      @media (max-width: 1199px) {
+
+      } 	 
+
+       // XL
+       @media (max-width: 1499px) {
+         
+       }	
+
+	    // MD
+        @media (max-width: 1199px) {
+            
+        }
+
+	    // SM
+        @media (max-width: 991px) {
+
+        }
+
+        // XS
+        @media (max-width: 767px) {
+
+        }
+        // XXS
+        @media (max-width: 767px) {
+       
+        }
+}
+
+.wrapper{
+	background: #fff;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+
+//
+// Fonts
+// --------------------------------------------------
+
+body {
+    font-family: 'Proxima-Regular';
+}
+
+b, strong {
+    font-family: 'Proxima-Bold';
+}
+
+h1, h2, h3, h4, h5, h6 {
+   font-family: 'Conv_AlegreyaSC-Regular', Sans-Serif;
+}
+
+a {
+    color: $font-dark;
+
+    &:hover, &:focus {
+        color: $font-grey;
+        text-decoration: none;
+    }
+
+    &:active, &:visited {
+        color: $font-dark;
+    }
+}
+ 
+@font-face {
+	font-family: 'Conv_AlegreyaSC-Regular';
+	src: url('../font/AlegreyaSC-Regular copia.eot');
+	src: local('?'), url('../font/AlegreyaSC-Regular.woff') format('woff'), url('../font/AlegreyaSC-Regular.ttf') format('truetype'), url('../font/AlegreyaSC-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Proxima-Regular';
+	src: url('../font/ProximaNova-Regular.eot');
+	src: url('../font/ProximaNova-Regular.woff') format('woff'), url('../font/ProximaNova-Regular.ttf') format('truetype'), url('../font/ProximaNova-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Proxima-Bold';
+	src: url('../font/ProximaNova-Sbold_0.eot');
+	src: url('../font/ProximaNova-Sbold_0.woff') format('woff'), url('../font/ProximaNova-Sbold_0.ttf') format('truetype'), url('../font/ProximaNova-Sbold_0.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+//
+// Mixins
+// --------------------------------------------------
+
+@mixin centerize {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+
+//
+// Animations
+// --------------------------------------------------
+
+
+a, a:hover, button, button:hover, .btnborder, .btntop {
+  transition: all 0.3s ease-in-out;
+}
+
