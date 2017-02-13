@@ -7,34 +7,7 @@ html{
 }
 
 body{
-      // LG
-      @media (max-width: 1199px) {
 
-      } 	 
-
-       // XL
-       @media (max-width: 1499px) {
-         
-       }	
-
-	    // MD
-        @media (max-width: 1199px) {
-            
-        }
-
-	    // SM
-        @media (max-width: 991px) {
-
-        }
-
-        // XS
-        @media (max-width: 767px) {
-
-        }
-        // XXS
-        @media (max-width: 767px) {
-       
-        }
 }
 
 .wrapper{
@@ -64,7 +37,7 @@ a {
     color: $font-dark;
 
     &:hover, &:focus {
-        color: $font-grey;
+        color: $font-dark;
         text-decoration: none;
     }
 
