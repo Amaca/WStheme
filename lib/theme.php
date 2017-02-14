@@ -2,18 +2,6 @@
 
 namespace Roots\WStheme\Theme;
 
-
-/*---------------------------------------------------
-Oggetto di configurazione con url custom
---------------------------------------------------*/
-
-global $pagesID;
-
-$pagesID = (object) [
-    'nome-pagina1' => 50,
-    'nome-pagina2' => 54
-];
-
 /*---------------------------------------------------
 Register Custom Menus
 --------------------------------------------------*/
