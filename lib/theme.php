@@ -12,29 +12,6 @@ register_nav_menus( array(
 
 
 /*---------------------------------------------------
-Add search bar to main menu
---------------------------------------------------*/
-function your_custom_menu_item ( $items, $args ) {
-
-    if( $args->menu->name == 'Main Menu')  {
-        $url = home_url(); 
-        $items .=   '<li>
-                        <div class="search-form">
-                            <a href="#" class="search-toggle"></a>
-                            <form role="search" method="get" action="'. $url .'">
-                                <input type="text" class="search-field" value="" name="s" />
-                                <button type="submit" class="search-submit" value="Cerca">cerca</button>
-                            </form>
-                        </div>
-                    </li>';
-    }
-
-    return $items;
-}
-add_filter( 'wp_nav_menu_items', __NAMESPACE__ . '\\your_custom_menu_item', 10, 2 );
-
-
-/*---------------------------------------------------
 Register Sidebar
 --------------------------------------------------*/
 function widgets_init() {

@@ -4,10 +4,19 @@ Website by Websolute
 --------------------------------------------------*/
 //var $ = jQuery.noConflict();
 
+var wpInfo = wpToJs;
+console.log(wpInfo);
+
+function example() {
+
+}
+
 /*--------------------------------------------------
 DOC READY
 --------------------------------------------------*/
 $(function () {
+
+    example();
 
 }); 
   

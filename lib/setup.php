@@ -122,11 +122,10 @@ function include_scripts(){
             wp_register_script( $jsLibrary->name, $jsLibrary->url, $jsLibrary->deps, $jsLibrary->ver, $jsLibrary->in_footer );
             wp_enqueue_script( $jsLibrary->name );
 
-            //localizzo lo script main per passare informazioni di WP ai file javascript
-            $themePath = array( 'templateUrl' => get_stylesheet_directory_uri() );
-            wp_localize_script( $jsLibrary->name, 'mainTheme', $JSinfo );
         }
 
+        //localizzo lo script main per passare informazioni di WP a main.js
+        wp_localize_script( 'main', 'wpToJs', $JSinfo );
 
     } else { //se non è in debug mode prende da /dist
 
@@ -138,9 +137,7 @@ function include_scripts(){
         wp_enqueue_script( 'main-min' );
 
         //localizzo lo script main per passare informazioni di WP ai file javascript
-        $themePath = array( 'templateUrl' => get_stylesheet_directory_uri() );
-        wp_localize_script( $jsLibrary->name, 'mainTheme', $JSinfo );
-
+        wp_localize_script( 'main-min', 'wpToJs', $JSinfo );
     }
 
     /*---------------------------------------------------

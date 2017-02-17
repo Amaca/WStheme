@@ -22,15 +22,15 @@ body{
 // --------------------------------------------------
 
 body {
-    font-family: 'Proxima-Regular';
+    font-family: Verdana;
 }
 
 b, strong {
-    font-family: 'Proxima-Bold';
+    font-family: Verdana;
 }
 
 h1, h2, h3, h4, h5, h6 {
-   font-family: 'Conv_AlegreyaSC-Regular', Sans-Serif;
+   font-family:  Sans-Serif;
 }
 
 a {
@@ -47,28 +47,10 @@ a {
 }
  
 @font-face {
-	font-family: 'Conv_AlegreyaSC-Regular';
-	src: url('../font/AlegreyaSC-Regular copia.eot');
-	src: local('?'), url('../font/AlegreyaSC-Regular.woff') format('woff'), url('../font/AlegreyaSC-Regular.ttf') format('truetype'), url('../font/AlegreyaSC-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
+	
 }
 
-@font-face {
-	font-family: 'Proxima-Regular';
-	src: url('../font/ProximaNova-Regular.eot');
-	src: url('../font/ProximaNova-Regular.woff') format('woff'), url('../font/ProximaNova-Regular.ttf') format('truetype'), url('../font/ProximaNova-Regular.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
-@font-face {
-	font-family: 'Proxima-Bold';
-	src: url('../font/ProximaNova-Sbold_0.eot');
-	src: url('../font/ProximaNova-Sbold_0.woff') format('woff'), url('../font/ProximaNova-Sbold_0.ttf') format('truetype'), url('../font/ProximaNova-Sbold_0.svg') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
 
 //
 // Mixins
