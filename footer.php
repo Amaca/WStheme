@@ -22,13 +22,12 @@ use Roots\WStheme\ACF;
                     echo strip_tags(wp_nav_menu( $menuParameters ), '<a>' );
                     ?>  
             </div>
+            <a title="eCommerce" target="_blank" href="https://www.websolute.com" alt="eCommerce"><img src="<?php Custom\image_path('DigitalMarketing.png', false); ?>"></a>
         </footer>
         <!-- /Footer -->
-
+        
     </div>
     <!-- /Wrapper -->
-
-    <a title="eCommerce" target="_blank" href="https://www.websolute.com" alt="eCommerce">Websolute<img src="<?php Custom\image_path('DigitalMarketing.png', false); ?>"></a>
 
     <?php wp_footer(); ?>
 </body>
