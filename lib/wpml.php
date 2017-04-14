@@ -6,8 +6,12 @@ namespace Roots\WStheme\Wpml;
 /*---------------------------------------------------
 WPML - Translate strings
 --------------------------------------------------*/
-function lang($stringToTranslate) {
-    return __($stringToTranslate, 'WStheme');
+function lang($stringToTranslate, $echo) {
+    if ($echo) {
+        return _e($stringToTranslate, 'WStheme');
+    } else {
+        return __($stringToTranslate, 'WStheme');
+    }
 }
 
 
@@ -24,6 +28,49 @@ function language_selector(){
         }
     }
 }
+
+
+/*--------------------------------------------------
+IP redirection
+--------------------------------------------------*/
+function ipRedir() {
+
+    global $sitepress;
+    global $pagesID;
+
+    if ($pagesID->hostUrl == $pagesID->productionUrl) {
+        $ip = $_SERVER['HTTP_X_REAL_IP'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+	if($_SERVER['REDIRECT_URL'] == ''){
+        $url = 'http://geoip.websolute.it/ip2location/get_info.aspx?ipaddress=' . $ip;
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $sessionResult = simplexml_load_string($result);
+        $nazione = $sessionResult->CountryCode;
+        if($nazione == 'SM') $nazione = 'IT';
+        if(trim($nazione) == '-') $nazione = IT;
+
+        $redir = ($nazione!='IT'?"en":"it");
+
+        if($_SERVER['REQUEST_URI'] != '/wp-login.php'){
+
+            if(!strstr($_SERVER['REQUEST_URI'],'wp-admin')){
+
+                header("HTTP/1.1 301 Moved Permanently");
+                header("Location: /".$redir."/");
+	            exit();
+            }
+	    }
+    }
+}
+
+add_action( 'init',  __NAMESPACE__ . '\\ipRedir', 5); //togli il commento per attivare il redirect
 
 
 /*--------------------------------------------------

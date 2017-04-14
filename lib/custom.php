@@ -2,7 +2,6 @@
 
 namespace Roots\WStheme\Custom;
 
-
 /*---------------------------------------------------
 Image path
 --------------------------------------------------*/
@@ -13,6 +12,26 @@ function image_path($imageName, $get) {
         return get_template_directory_uri() . '/dist/img/' . $imageName;
     }
 }
+
+/*---------------------------------------------------
+DEBUG Print inline
+--------------------------------------------------*/
+function print_inline($object) {
+    echo '<pre>';
+    print_r($object);
+    echo '</pre>';
+}
+
+
+/*---------------------------------------------------
+DEBUG Fixed console
+--------------------------------------------------*/
+function console($object) {
+    echo '<div style="position: fixed; background: #444; right: 0; bottom: 50px;  z-index: 999999; color: #ffffff; padding: 20px; opacity: 0.9">';
+    print_inline($object);
+    echo '</div>';
+}
+
 
 /*---------------------------------------------------
 Clean Excerpt
@@ -31,6 +50,20 @@ function et_excerpt_length($length) {
 }
 add_filter('excerpt_length', __NAMESPACE__ . '\\et_excerpt_length');
 
+
+/*---------------------------------------------------
+Custom Excerpt
+--------------------------------------------------*/
+function custom_excerpt($number) {
+
+    $excerpt = get_the_content();
+    if (strlen($excerpt) > $number) {
+        $maxLength = $number;
+        $excerpt = preg_replace("/<img[^>]+\>/i", "", $excerpt);
+        $excerpt = (substr($excerpt, 0, $maxLength)) . '..."';
+    }
+    echo '<div class="text">' . $excerpt . '</div>';
+}
 
 /*---------------------------------------------------
 Disable admin bar
@@ -140,6 +173,8 @@ add_filter('post_gallery',  __NAMESPACE__ . '\\my_post_gallery', 10, 2);
 Archive pagination
 --------------------------------------------------*/
 function pagination() {
+    $prev = '';
+    $next = '';
     $prev .= '<button class="whitebg" type="button">
             <div class="btntop">Precedenti</div>
           </button>';
@@ -149,6 +184,7 @@ function pagination() {
          </button>';
     posts_nav_link( ' ', $prev, $next );
 }
+
 
 /*---------------------------------------------------
 Attributes to Prev/Next buttons
@@ -302,6 +338,5 @@ function create_breadcrumbs() {
 <?php
     }
 }
-
 
 ?>

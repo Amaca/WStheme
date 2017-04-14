@@ -7,12 +7,28 @@ Oggetto di configurazione con url custom
 --------------------------------------------------*/
 global $pagesID;
 
-$pagesID = (object) [
-    'templateUrl' => get_stylesheet_directory_uri(),
-    'blog' => 54,
-    'about' => 41,
-    'contatti' => 70
-];
+$host = 'http://'. $_SERVER['SERVER_NAME'];
+$prodSite = 'http://www.nomesitoproduzione.net';  //cambiare nome sito con quello in produzione
+
+if($host == $prodSite) {
+    //produzione
+    $pagesID = (object) [
+        'templateUrl' => get_stylesheet_directory_uri(),
+        'hostUrl' => $host,
+        'productionUrl' => $prodSite,
+        'blog' => 350,     //codice ID pagina blog per attivare campi ACF in index.php
+        'contatti' => 14,  //codice ID pagina contatti per attivare mappa con main.js
+    ];
+} else {
+    // locale e dev
+    $pagesID = (object) [
+        'templateUrl' => get_stylesheet_directory_uri(),
+        'hostUrl' => $host,
+        'productionUrl' => $prodSite,
+        'blog' => 65,     //codice ID pagina blog per attivare campi ACF in index.php
+        'contatti' => 24,  //codice ID pagina contatti per attivare mappa con main.js
+    ];
+}
 
 
 /*--------------------------------------------------
@@ -23,7 +39,6 @@ function switch_jquery(){
         wp_deregister_script('jquery');
         wp_register_script('jquery', ( get_template_directory_uri() . '/dist/js/vendor/jquery-3.1.0.min.js'), false, '3.1.0', false);
         wp_enqueue_script('jquery');
-
     }
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\switch_jquery');
@@ -41,9 +56,13 @@ function include_scripts(){
         // invio l'oggetto di configurazione a javascript aggiungendo il POST ID della pagina
         $pagesID->isSinglePost = '';
         $pagesID->postID = '';
+        $pagesID->isHome = '';
+        $pagesID->isBlog = '';
     } else {
         $pagesID->isSinglePost = is_single($post->ID);
         $pagesID->postID = $post->ID;
+        $pagesID->isHome = is_front_page($post->ID);
+        $pagesID->isBlog = is_home($post->ID);
     }
 
     $JSinfo = (array) $pagesID;
@@ -56,7 +75,7 @@ function include_scripts(){
         $loadJsInfo = (object) [
 
             // isMobile
-            'ismobile' => 
+            'ismobile' =>
                     (object) [
                         'name'      => 'ismobile',
                         'url'       => get_template_directory_uri() . '/src/js/vendor/isMobile.js',
@@ -65,7 +84,7 @@ function include_scripts(){
                         'in_footer' => true
                     ],
             // jQuery Easing
-            'easing'   =>  
+            'easing'   =>
                     (object) [
                         'name'      => 'easing',
                         'url'       => get_template_directory_uri() . '/src/js/vendor/jquery.easing.min.js',
@@ -74,7 +93,7 @@ function include_scripts(){
                         'in_footer' => true
                     ],
             // Slick Slider
-            'slick'   =>  
+            'slick'   =>
                     (object) [
                         'name'      => 'slick',
                         'url'       => get_template_directory_uri() . '/src/js/vendor/slick.js',
@@ -83,7 +102,7 @@ function include_scripts(){
                         'in_footer' => true
                     ],
             // Tether
-            'tether'   =>  
+            'tether'   =>
                     (object) [
                         'name'      => 'tether',
                         'url'       => get_template_directory_uri() . '/src/js/vendor/tether.js',
@@ -92,7 +111,7 @@ function include_scripts(){
                         'in_footer' => true
                     ],
             // Bootstrap
-            'bootstrap' =>  
+            'bootstrap' =>
                     (object) [
                         'name'      => 'bootstrap',
                         'url'       => get_template_directory_uri() . '/src/js/vendor/bootstrap.js',
@@ -101,7 +120,7 @@ function include_scripts(){
                         'in_footer' => true
                     ],
             // Main
-            'main'   =>  
+            'main'   =>
                     (object) [
                         'name'      => 'main',
                         'url'       => get_template_directory_uri() . '/src/js/main.js',
@@ -132,7 +151,7 @@ function include_scripts(){
         /*---------------------------------------------------
         JS LOADER DEBUG OFF
         --------------------------------------------------*/
-        wp_register_script( 'main-min', 
+        wp_register_script( 'main-min',
         get_template_directory_uri() . '/dist/js/main.min.js', array('jquery'), '1.0', true );
         wp_enqueue_script( 'main-min' );
 
@@ -171,11 +190,11 @@ function include_scripts(){
                 ],
         // Main CSS
         'main-css' => $mainCss,
-        
+
     ];
 
     /*---------------------------------------------------
-    CSS LOADER 
+    CSS LOADER
     --------------------------------------------------*/
     foreach ($loadCssInfo as $cssLibrary) {
 
@@ -189,10 +208,32 @@ function include_scripts(){
     //font
     wp_register_style( 'font-hind','https://fonts.googleapis.com/css?family=Hind:400,500,600,700&amp;subset=latin-ext');
     wp_enqueue_style( 'font-hind' );
- 
+
 }
 
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\include_scripts' );
+
+
+/*---------------------------------------------------
+HOOK XDEFAULT
+--------------------------------------------------*/
+function hook_xdefault() {
+    global $pagesID;
+    if (is_front_page()) {
+		echo'<link rel="alternate" hreflang="x-default" href="' . $pagesID->hostUrl . '" />'. PHP_EOL;
+
+	}
+}
+add_action('wp_head',  __NAMESPACE__ . '\\hook_xdefault', 1);
+
+
+/*---------------------------------------------------
+DISABLE EMOJI
+--------------------------------------------------*/
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 ?>
 
