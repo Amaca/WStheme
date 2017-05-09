@@ -2,7 +2,6 @@
 
 namespace Roots\WStheme\ACF;
 
-
 /*---------------------------------------------------
 Include partial lines through ACF
 --------------------------------------------------*/
@@ -26,6 +25,4 @@ ACF Option page
 if( function_exists('acf_add_options_page') ) {
     acf_add_options_page();
 }
-
-
 ?>

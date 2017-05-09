@@ -1,5 +1,4 @@
 <?php
-
 namespace Roots\WStheme\Theme;
 
 /*---------------------------------------------------
@@ -34,6 +33,4 @@ function widgets_init() {
     ]);
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
-
-
 ?>

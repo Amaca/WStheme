@@ -1,7 +1,5 @@
 <?php
-
 namespace Roots\WStheme\Woocommerce;
-
 
 /*---------------------------------------------------
 Woocommerce support
@@ -103,6 +101,4 @@ function cheapmaal_woocommerce_account_menu_items_callback($items) {
     return $items;
 }
 add_filter('woocommerce_account_menu_items', 'cheapmaal_woocommerce_account_menu_items_callback', 10, 1);
-
-
 ?>

@@ -1,7 +1,5 @@
 <?php
-
 namespace Roots\WStheme\Wpml;
-
 
 /*---------------------------------------------------
 WPML - Translate strings
@@ -72,7 +70,6 @@ function ipRedir() {
 
 add_action( 'init',  __NAMESPACE__ . '\\ipRedir', 5); //togli il commento per attivare il redirect
 
-
 /*--------------------------------------------------
 Translating String through ACF and WPML
 --------------------------------------------------*/
@@ -116,5 +113,4 @@ Get Translating String through ACF and WPML
 //        endwhile;
 //    }
 //}
-
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 namespace Roots\WStheme\Custom;
 
 /*---------------------------------------------------
@@ -338,5 +337,4 @@ function create_breadcrumbs() {
 <?php
     }
 }
-
 ?>
