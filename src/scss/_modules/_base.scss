@@ -1,3 +1,5 @@
+@import 'variables';
+
 /*--------------------------------------------------
 Base
 --------------------------------------------------*/
@@ -51,30 +53,9 @@ a {
 }
 
 
-
-//
-// Mixins
-// --------------------------------------------------
-
-@mixin centerize {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-@mixin clearfix {
-    content: '';
-    display: table;
-    clear: both;
-}
-
-
 //
 // Animations
 // --------------------------------------------------
-
-
 a, a:hover, button, button:hover, .btnborder, .btntop {
   transition: all 0.3s ease-in-out;
 }
