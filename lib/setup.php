@@ -187,6 +187,18 @@ function include_scripts(){
                     'name'      => 'font-awesome',
                     'url'       => get_template_directory_uri() . '/dist/css/font-awesome.css',
                 ],
+		     // Slick
+        'slick-css' =>
+                (object) [
+                    'name'      => 'slick-css',
+                    'url'       => get_template_directory_uri() . '/dist/css/slick.css',
+                ],
+        // Slick
+        'slick-theme' =>
+                (object) [
+                    'name'      => 'slick-theme',
+                    'url'       => get_template_directory_uri() . '/dist/css/slick-theme.css',
+                ],
         // Main CSS
         'main-css' => $mainCss,
 
