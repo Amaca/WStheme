@@ -14,7 +14,6 @@ $bg-white:				#ffffff;
 $font-dark:             #181818;
 $font-white:			#ffffff;
 
-
 // animation
 $expo:              all 500ms cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 $smooth:            cubic-bezier(.49, .06, .21, .98);
@@ -23,12 +22,13 @@ $smooth:            cubic-bezier(.49, .06, .21, .98);
 //--------------------------------------------------
 //Media Query
 //--------------------------------------------------
-$xl-width: 1499px;
-$md-width: 1199px;
+$xl-width: 1599px;
+$lg-width: 1499px;
 $md-width: 1199px;
 $sm-width: 991px;
 $xs-width: 767px;
 $xxs-width: 575px;
+
 
 @mixin xl {
   @media (max-width: #{$xl-width}) {
@@ -37,7 +37,7 @@ $xxs-width: 575px;
 } 
 
 @mixin lg {
-  @media (max-width: #{$xl-width}) {
+  @media (max-width: #{$lg-width}) {
     @content;
   }
 }

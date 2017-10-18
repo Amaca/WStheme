@@ -51,13 +51,14 @@ use Roots\WStheme\ACF;
     <?php get_template_part('partials/page_cover'); ?>
 
     <?php 
+    // METTE UNA CLASSE CSS AL MAIN A SECONDA DELLA SEZIONE IN CUI SIAMO
     if (is_singular('custom-post')) {
         $classCheck = 'custom-post';
     } else if ( is_post_type_archive('custom-post')) { 
         $classCheck = 'custom-post';
     } else if ( is_home()) { 
         $classCheck = 'listing'; 
-    } else if (is_page_template('templates/hoempage.php')) {
+    } else if (is_page_template('templates/homepage.php')) {
         $classCheck = 'home';
     } else if (is_archive()) {
         $classCheck = 'listing';

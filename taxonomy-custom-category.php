@@ -12,7 +12,10 @@
             </div>
         </div>
 
-        <?php pagination(); ?>
+        <?php
+          //CREA PAGINAZIONE
+          //pagination();
+        ?>
 
     </div>
 </section>

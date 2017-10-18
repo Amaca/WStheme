@@ -12,6 +12,7 @@ function image_path($imageName, $get) {
     }
 }
 
+
 /*---------------------------------------------------
 DEBUG Print inline
 --------------------------------------------------*/
@@ -63,6 +64,7 @@ function custom_excerpt($number) {
     }
     echo '<div class="text">' . $excerpt . '</div>';
 }
+
 
 /*---------------------------------------------------
 Disable admin bar

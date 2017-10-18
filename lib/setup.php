@@ -217,8 +217,8 @@ function include_scripts(){
     }
 
     //font
-    wp_register_style( 'font-hind','https://fonts.googleapis.com/css?family=Hind:400,500,600,700&amp;subset=latin-ext');
-    wp_enqueue_style( 'font-hind' );
+    //wp_register_style( 'font-hind','https://fonts.googleapis.com/css?family=Hind:400,500,600,700&amp;subset=latin-ext');
+    //wp_enqueue_style( 'font-hind' );
 
 }
 
